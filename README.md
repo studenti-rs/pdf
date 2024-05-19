@@ -17,7 +17,7 @@ We're using [Docker](https://www.docker.com/) for local development and deployme
 ### Local development
 
 ```bash
-docker-compose -f docker-compose.yml up --build # Optional: --watch --remove-orphans
+docker-compose -f docker-compose.dev.yml up --build # Optional: --watch --remove-orphans
 ```
 
 ### Run in production
