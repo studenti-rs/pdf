@@ -19,17 +19,32 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v1
+        uses: docker/setup-buildx-action@v2
 
       - name: Log in to GitHub Container Registry
-        run: echo "${{ secrets.STUDENTI_PDF_PACKAGES_PAT }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+        run: |
+          echo "${{ secrets.STUDENTI_PDF_PACKAGES_PAT }}" | \
+          docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+      - name: Extract branch name and commit SHA
+        id: vars
+        run: |
+          branch="${GITHUB_REF#refs/heads/}"
+          commit_sha="${GITHUB_SHA}"
+          timestamp=$(date +"%Y%m%d%H%M%S")
+          version="$branch-$timestamp-$commit_sha"
+          echo "::set-output name=version::$version"
 
       - name: Build and push Docker image
         env:
-          IMAGE_NAME: pdf-studenti-rs
-          VERSION: latest
+          IMAGE_NAME: pdf
+          VERSION: ${{ steps.vars.outputs.version }}
         run: |
-          docker buildx build --file Dockerfile --tag ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME:$VERSION --push .
+          docker buildx build \
+            --file Dockerfile \
+            --tag ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME:$VERSION \
+            --tag ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME:latest \
+            --push .
