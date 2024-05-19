@@ -29,14 +29,13 @@ jobs:
           echo "${{ secrets.STUDENTI_PDF_PACKAGES_PAT }}" | \
           docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
-      - name: Extract branch name and commit SHA
+      - name: Extract branch name and short commit SHA
         id: vars
         run: |
           branch="${GITHUB_REF#refs/heads/}"
           branch="${branch//\//-}"  # Replace '/' with '-'
-          commit_sha="${GITHUB_SHA}"
-          timestamp=$(date +"%Y%m%d%H%M%S")
-          version="$branch-$timestamp-$commit_sha"
+          short_sha="${GITHUB_SHA::7}"
+          version="$branch-$short_sha"
           echo "version=$version" >> $GITHUB_ENV
 
       - name: Build and push Docker image
