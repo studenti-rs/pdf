@@ -16,14 +16,10 @@ We're using [Docker](https://www.docker.com/) for local development and deployme
 
 ### Local development
 
+We use [docker-compose](https://docs.docker.com/compose/) to run the app locally.
+
+It will mount local files to the container, so you can make changes and see them reflected in real-time.
+
 ```bash
 docker-compose -f docker-compose.dev.yml up --build # Optional: --watch --remove-orphans
-```
-
-### Run in production
-
-```bash
-chmod +x start.sh
-
-./start.sh
 ```
