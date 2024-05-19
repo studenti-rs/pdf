@@ -19,3 +19,11 @@ We're using [Docker](https://www.docker.com/) for local development and deployme
 ```bash
 docker-compose -f docker-compose.yml up --build # Optional: --watch --remove-orphans
 ```
+
+### Run in production
+
+```bash
+chmod +x start.sh
+
+./start.sh
+```
