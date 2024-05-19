@@ -1,22 +1,25 @@
-# Getting Started
+<p align="center"><img src="https://raw.githubusercontent.com/studenti-rs/pdf/de7aa7b4187a9b1c935693435f4a6d426b3e146e/stirling-pdf/customFiles/static/favicon.svg" width="80" ></p>
 
-## Local development
+<h1 align="center">PDF Tools</h1>
+
+[pdf.studenti.rs](https://pdf.studenti.rs) is a self-hosted [Stirling-PDF](https://github.com/Stirling-Tools/Stirling-PDF/tree/main) instance.
+
+It enables you to carry out various operations on PDF files, including splitting, merging, converting, reorganizing, adding images, rotating, compressing, and more.
+
+All files and PDFs exist either exclusively on the client side, reside in server memory only during task execution, or temporarily reside in a file solely for the execution of the task. Any file downloaded by the user will have been deleted from the server by that point.
+
+## Getting Started
+
+Not much to say, on top of the official docs.
+
+We're using [Docker](https://www.docker.com/) for local development and deployment. We pass a yaml config and some static file overrides.
+
+### Local development
+
+We use [docker-compose](https://docs.docker.com/compose/) to run the app locally.
+
+It will mount local files to the container, so you can make changes and see them reflected in real-time.
 
 ```bash
-docker-compose -f docker-compose.yml up --build # Optional: --watch --remove-orphans
-```
-
-## Production
-
-```bash
-docker build -t stirling-pdf -f Dockerfile .
-docker run -p 8080:8080 \
-           -v $(pwd)/stirling-pdf/configs:/configs \
-           -v $(pwd)/stirling-pdf/customFiles/static:/customFiles/static \
-           -e DOCKER_ENABLE_SECURITY=false \
-           -e INSTALL_BOOK_AND_ADVANCED_HTML_OPS=false \
-           -e SYSTEM_DEFAULTLOCALE=sr_LATN_RS \
-           -e SYSTEM_CUSTOM_STATIC_FILE_PATH=/customFiles/static/ \
-           -e LANGS="sr_LATN_RS,en_US" \
-           stirling-pdf
+docker-compose -f docker-compose.dev.yml up --build # Optional: --watch --remove-orphans
 ```
