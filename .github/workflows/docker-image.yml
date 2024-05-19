@@ -51,6 +51,5 @@ jobs:
       - name: DigitalOcean App Platform deployment
         uses: digitalocean/app_action@v1.1.5
         with:
-          app_name: studenti-rs-sterling-pdf
+          app_name: pdf
           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
-          images: ghcr.io/studenti-rs/pdf
