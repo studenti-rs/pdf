@@ -33,6 +33,7 @@ jobs:
         id: vars
         run: |
           branch="${GITHUB_REF#refs/heads/}"
+          branch="${branch//\//-}"  # Replace '/' with '-'
           commit_sha="${GITHUB_SHA}"
           timestamp=$(date +"%Y%m%d%H%M%S")
           version="$branch-$timestamp-$commit_sha"
