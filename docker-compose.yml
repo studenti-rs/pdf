@@ -1,0 +1,14 @@
+services:
+  stirling-pdf:
+    image: frooodle/s-pdf:latest
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./stirling-pdf/configs:/configs
+      - ./stirling-pdf/customFiles/static:/customFiles/static
+    environment:
+      - DOCKER_ENABLE_SECURITY=false
+      - INSTALL_BOOK_AND_ADVANCED_HTML_OPS=false
+      - SYSTEM_DEFAULTLOCALE=sr_LATN_RS
+      - SYSTEM_CUSTOM_STATIC_FILE_PATH=/customFiles/static/
+      - LANGS=sr_LATN_RS,en_US
