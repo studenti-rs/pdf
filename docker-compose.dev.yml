@@ -1,6 +1,6 @@
 services:
   stirling-pdf:
-    image: frooodle/s-pdf:latest
+    image: frooodle/s-pdf:0.26.1
     ports:
       - "8080:8080"
     volumes:
@@ -11,4 +11,4 @@ services:
       - INSTALL_BOOK_AND_ADVANCED_HTML_OPS=false
       - SYSTEM_DEFAULTLOCALE=sr_LATN_RS
       - SYSTEM_CUSTOM_STATIC_FILE_PATH=/customFiles/static/
-      - LANGS="sr_LATN_RS,en_US
+      - LANGS="sr_LATN_RS,en_US"

@@ -17,7 +17,7 @@ For local development and deployment, we utilize Docker. We pass a YAML configur
 To run the app locally, use Docker Compose. It mounts local files to the container, enabling real-time changes.
 
 ```bash
-docker-compose -f docker-compose.dev.yml up --build # Optional: --watch --remove-orphans
+docker compose -f docker-compose.dev.yml up --build # Optional: --watch --remove-orphans
 ```
 
 ### Production
@@ -31,9 +31,10 @@ In case you want to run the production version locally, use the following comman
 docker build -t studenti-rs-pdf -f Dockerfile .
 
 # Run the Docker container
-docker run -d --name studenti-rs-pdf \
-           -p 8080:8080 \
-           -v ./stirling-pdf/configs:/configs \
-           -v ./stirling-pdf/customFiles/static:/customFiles/static \
-           studenti-rs-pdf
+docker run -d \
+  --name studenti-rs-pdf \
+  -p 8080:8080 \
+  -v ./stirling-pdf/configs:/configs \
+  -v ./stirling-pdf/customFiles/static:/customFiles/static \
+  studenti-rs-pdf
 ```
