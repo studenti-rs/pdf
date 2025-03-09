@@ -1,4 +1,4 @@
-FROM frooodle/s-pdf:0.26.1
+FROM frooodle/s-pdf:0.28.1
 
 EXPOSE 8080
 
