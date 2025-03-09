@@ -87,9 +87,9 @@ system:
   enableAnalytics: false # set to 'true' to enable analytics, set to 'false' to disable analytics; for enterprise users, this is set to true
 
 ui:
-  appName: "PDF alati | studenti.rs" # application's visible name
-  homeDescription: "Konverzije PDF dokumenata u Word, Excel, PowerPoint, JPG, PNG, HTML i obrnuto." # short description or tagline shown on the homepage
-  appNameNavbar: "PDF alati | studenti.rs" # name displayed on the navigation bar
+  appName: 'PDF alati | studenti.rs' # application's visible name
+  homeDescription: 'Konverzije PDF dokumenata u Word, Excel, PowerPoint, JPG, PNG, HTML i obrnuto.' # short description or tagline shown on the homepage
+  appNameNavbar: 'PDF alati | studenti.rs' # name displayed on the navigation bar
 
 endpoints:
   toRemove: [] # list endpoints to disable (e.g. ['img-to-pdf', 'remove-pages'])
