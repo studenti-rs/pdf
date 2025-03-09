@@ -84,12 +84,12 @@ system:
   showUpdateOnlyAdmin: false # only admins can see when a new update is available, depending on showUpdate it must be set to 'true'
   customHTMLFiles: true # enable to have files placed in /customFiles/templates override the existing template HTML files
   tessdataDir: /usr/share/tessdata # path to the directory containing the Tessdata files. This setting is relevant for Windows systems. For Windows users, this path should be adjusted to point to the appropriate directory where the Tessdata files are stored.
-  enableAnalytics: undefined # set to 'true' to enable analytics, set to 'false' to disable analytics; for enterprise users, this is set to true
+  enableAnalytics: false # set to 'true' to enable analytics, set to 'false' to disable analytics; for enterprise users, this is set to true
 
 ui:
-  appName: PDF alati | studenti.rs # application's visible name
-  homeDescription: Konverzije PDF dokumenata u Word, Excel, PowerPoint, JPG, PNG, HTML i obrnuto. # short description or tagline shown on the homepage
-  appNameNavbar: PDF alati | studenti.rs # name displayed on the navigation bar
+  appName: "PDF alati | studenti.rs" # application's visible name
+  homeDescription: "Konverzije PDF dokumenata u Word, Excel, PowerPoint, JPG, PNG, HTML i obrnuto." # short description or tagline shown on the homepage
+  appNameNavbar: "PDF alati | studenti.rs" # name displayed on the navigation bar
 
 endpoints:
   toRemove: [] # list endpoints to disable (e.g. ['img-to-pdf', 'remove-pages'])
