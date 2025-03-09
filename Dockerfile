@@ -1,10 +1,11 @@
-FROM frooodle/s-pdf:0.28.1
+FROM frooodle/s-pdf:0.44.0
 
 EXPOSE 8080
 
 COPY ./stirling-pdf/customFiles/static/* /customFiles/static/
 
 ENV DOCKER_ENABLE_SECURITY=false
+ENV SECURITY_ENABLELOGIN=false
 ENV INSTALL_BOOK_AND_ADVANCED_HTML_OPS=false
 ENV SYSTEM_DEFAULTLOCALE=sr_RS
 ENV APP_LOCALE=sr_RS
