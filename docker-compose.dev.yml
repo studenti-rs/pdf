@@ -1,6 +1,6 @@
 services:
   stirling-pdf:
-    image: frooodle/s-pdf:0.44.0
+    image: frooodle/s-pdf:0.44.1
     ports:
       - "8080:8080"
     volumes:
@@ -12,15 +12,26 @@ services:
       retries: 16
     environment:
       DOCKER_ENABLE_SECURITY: "false"
-      SECURITY_ENABLELOGIN: "false"
+      SECURITY_ENABLE_LOGIN: "false"
       INSTALL_BOOK_AND_ADVANCED_HTML_OPS: "false"
-      SYSTEM_DEFAULTLOCALE: sr_LATN_RS
+      SYSTEM_DEFAULT_LOCALE: sr-RS
       SYSTEM_CUSTOM_STATIC_FILE_PATH: /customFiles/static/
       LANGS: "sr_LATN_RS,en_US"
-      UI_APPNAME: PDF alati
-      UI_HOMEDESCRIPTION: Konverzije PDF dokumenata u Word, Excel, PowerPoint, JPG, PNG, HTML i obrnuto.
-      UI_APPNAMENAVBAR: PDF alati
-      SYSTEM_MAXFILESIZE: "100"
-      METRICS_ENABLED: "false"
+      UI_APP_NAME: PDF alati
+      UI_HOME_DESCRIPTION: Konverzije PDF dokumenata u Word, Excel, PowerPoint, JPG, PNG, HTML i obrnuto.
+      UI_APP_NAVBAR_NAME: PDF alati
+      SYSTEM_MAX_FILE_SIZE: "100"
+      METRICS_ENABLED: "true"
       SYSTEM_GOOGLEVISIBILITY: "true"
+      API_ENABLED: "true"
+      API_REQUIRE_LOGIN: "false"
+      API_SHOW_DOCS: "true"
+      SECURITY_CSRF_DISABLED: "true"
+      SECURITY_CSRF_COOKIE_SECURE: "false"
+      SECURITY_ENABLE_CORS: "true"
+      SECURITY_CORS_ALLOWED_ORIGINS: "*"
+      SECURITY_ACTUATOR_PUBLIC: "true"
+      ENDPOINTS_HEALTH_SENSITIVE: "false"
+      MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE: "*"
+      SECURITY_CUSTOM_GLOBAL_API_KEY: "pdf-api-key"
     restart: on-failure:5
