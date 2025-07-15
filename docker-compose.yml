@@ -1,0 +1,27 @@
+services:
+  stirling-pdf:
+    image: frooodle/s-pdf:0.44.1
+    container_name: stirling-pdf
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./stirling-pdf/customFiles/static:/customFiles/static:ro
+    environment:
+      DOCKER_ENABLE_SECURITY: "false"
+      SECURITY_ENABLE_LOGIN: "false"
+      SYSTEM_DEFAULT_LOCALE: "sr-RS"
+      APP_LOCALE: "sr-RS"
+      LANGS: "sr_LATN_RS,en_US"
+      UI_APP_NAME: "PDF alati"
+      UI_HOME_DESCRIPTION: "Konverzije PDF dokumenata u Word, Excel, PowerPoint, JPG, PNG, HTML i obrnuto."
+      UI_APP_NAVBAR_NAME: "PDF alati"
+      SYSTEM_CUSTOM_STATIC_FILE_PATH: "/customFiles/static/"
+      SYSTEM_MAX_FILE_SIZE: "100"
+      JAVA_OPTS: "-Xmx1g -Xms256m"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8080/api/v1/info/status || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s 
